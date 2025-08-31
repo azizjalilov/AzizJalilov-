@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 }); // Trigger when 20% of the section is visible
+    }, { threshold: 0.2 });
 
     animatedSections.forEach(section => {
         observer.observe(section);
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mainNav.classList.toggle('is-active');
     });
 
-    // Close menu when a link is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             if (mainNav.classList.contains('is-active')) {

@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&display=swap');
-
 :root {
-    --text-color: #e0e0e0;
-    --primary-color: #00ffff;
-    --bg-color: #000000;
+    --bg-color: #0a0a1a;
+    --primary-color: #ffffff;
+    --secondary-color: #a9a9d4;
+    --accent-color: #00ffc3;
 }
 
 * {
@@ -13,9 +12,9 @@
 }
 
 body {
-    font-family: 'Exo 2', sans-serif;
-    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
+    color: var(--primary-color);
     overflow-x: hidden;
 }
 
@@ -24,50 +23,67 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: -1;
 }
 
-.content {
-    width: 100%;
-    position: relative;
-    z-index: 1;
+.container {
+    padding: 0 5%;
 }
 
-.hero-section {
+header {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.nav-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+#hero {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.hero-section h1 {
-    font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #fff;
-    text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+.hero-content {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.hero-section p {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    color: var(--text-color);
-    margin-top: 1rem;
-    font-weight: 300;
+.hero-content h1 {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
 }
 
 .content-section {
+    padding: 6rem 0;
     max-width: 800px;
     margin: 0 auto;
-    padding: 150px 40px;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    /* Animatsiya uchun boshlang'ich holat */
     opacity: 0;
     transform: translateY(50px);
 }
@@ -75,35 +91,51 @@ body {
 .content-section h2 {
     font-size: 3rem;
     margin-bottom: 2rem;
-    color: var(--primary-color);
     text-align: center;
+    color: var(--accent-color);
 }
 
-.content-section p {
-    font-size: 1.2rem;
-    line-height: 1.8;
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#contact p {
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+#contact a {
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 2rem;
+    gap: 1.5rem;
 }
 
 .social-links a {
-    color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 1.1rem;
-    padding: 10px 20px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    transition: color 0.3s;
 }
 
 .social-links a:hover {
-    background-color: var(--primary-color);
-    color: var(--bg-color);
-    box-shadow: 0 0 15px var(--primary-color);
+    color: var(--accent-color);
 }

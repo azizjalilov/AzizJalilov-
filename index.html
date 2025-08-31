@@ -1,102 +1,42 @@
-<!doctype html>
-<html lang="uz">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Aziz Jalilov — 3D portfolio. Professional 3D animation and interactive landing for portfolio." />
-  <title>Aziz Jalilov — 3D Portfolio</title>
-
-  <!-- Favicons (optional) -->
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Google font (light, professional) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aziz Jalilov | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    <header class="topbar">
-      <div class="brand">Aziz <span class="dot">.</span> Jalilov</div>
-      <nav class="nav">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Contact</a>
-      </nav>
+  <canvas id="bg"></canvas>
+
+  <main>
+    <header>
+      <h1>Aziz Jalilov</h1>
+      <p>Architect | 3D Designer | Innovator</p>
     </header>
 
-    <main class="hero">
-      <!-- Left content -->
-      <section class="hero-content">
-        <h1 class="title">3D Product · Interaction · Experience</h1>
-        <p class="subtitle">Professional 3D animations & interactive web experiences. Architect by training — designer by passion.</p>
-        <div class="hero-actions">
-          <a href="#work" class="btn">Portfolio</a>
-          <a href="#contact" class="btn ghost">Hire me</a>
-        </div>
-        <div class="badges">
-          <span>Three.js</span>
-          <span>WebGL</span>
-          <span>Interactive</span>
-        </div>
-      </section>
-
-      <!-- Right: 3D Canvas -->
-      <section class="hero-canvas">
-        <canvas id="scene"></canvas>
-        <!-- subtle overlay text on 3D -->
-        <div class="canvas-overlay">
-          <div class="role">Front-end / 3D · Architect</div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Work / Portfolio preview -->
-    <section id="work" class="work">
-      <h2>Selected Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <div class="thumb">3D Animation</div>
-          <h3>Interactive Showcase</h3>
-          <p>Full-screen WebGL scene with interactive lighting and performance optimization.</p>
-        </article>
-        <article class="card">
-          <div class="thumb">Architectural</div>
-          <h3>Architectural Visuals</h3>
-          <p>High-detail models, rendered for presentation and client review.</p>
-        </article>
-        <article class="card">
-          <div class="thumb">Branding</div>
-          <h3>Motion Branding</h3>
-          <p>Logo animations and looping hero visuals for landing pages.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="about">
+    <section>
       <h2>About Me</h2>
-      <p>Men Kimyo International University — Architecture bakalavriat bitiruvchisi. Web & 3D dizayn, interaktiv tajriba yarataman. Loyihalarim to‘g‘risida batafsil ko‘rish uchun "Portfolio"ga o‘tishingiz mumkin.</p>
+      <p>
+        I am a passionate architect and 3D designer who loves creating 
+        innovative projects that blend technology and design. 
+        Welcome to my portfolio!
+      </p>
     </section>
 
-    <!-- Contact -->
-    <footer id="contact" class="contact">
-      <div>
-        <h3>Get in touch</h3>
-        <p>Email: <a href="mailto:Azizjalilov575@gmail.com">Azizjalilov575@gmail.com</a></p>
-      </div>
-      <small>© <span id="year"></span> Aziz Jalilov — All rights reserved.</small>
-    </footer>
-  </div>
+    <section>
+      <h2>Projects</h2>
+      <p>Here you can showcase your best works, models, and visualizations.</p>
+    </section>
 
-  <!-- Three.js (ES modules) -->
-  <script type="module" src="script.js"></script>
+    <section>
+      <h2>Contact</h2>
+      <p>Email: azizjalilov575@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/azizjalilov" target="_blank">github.com/azizjalilov</a></p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
 </body>
-</html><!-- Three.js klassik versiya (import emas) -->
-<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
-<script src="https://unpkg.com/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
-
-<!-- Sizning kod -->
-<script src="script.js"></script>
+</html>

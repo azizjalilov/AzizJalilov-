@@ -1,14 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- YUKLANISH SPINNERI LOGIKASI ---
-    window.addEventListener('load', () => {
-        const loader = document.querySelector('.loader');
-        const mainContent = document.getElementById('main-content');
-        
-        loader.classList.add('content-loaded');
-        gsap.to(mainContent, { opacity: 1, duration: 1 });
-    });
-
     // --- THEME SWITCHER LOGIKASI ---
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -37,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- GSAP ANIMATSIYALARI ---
     gsap.registerPlugin(ScrollTrigger);
     
-    // Kirish animatsiyasi (yuklanishdan keyin)
     gsap.from(".profile-picture, .hero-name, .hero-subtitle", {
         opacity: 0, y: 30, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.5
     });

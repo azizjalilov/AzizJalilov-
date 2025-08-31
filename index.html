@@ -1,24 +1,57 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aziz Jalilov | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aziz Jalilov | Professional CV</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">Aziz Jalilov</h1>
-    <h2 class="subtitle">Architect & Designer</h2>
-    <p class="description">Innovative. Creative. Professional.</p>
 
-    <div class="cards">
-      <div class="card">🏗 Architecture Projects</div>
-      <div class="card">🎨 3D Design</div>
-      <div class="card">💡 Creative Solutions</div>
+    <div id="canvas-container"></div>
+
+    <div class="main-container">
+        <div class="card">
+            
+            <header class="profile-header">
+                <img src="rasm.jpg" alt="Aziz Jalilov" class="profile-picture">
+                <h1>Aziz Jalilov</h1>
+                <p class="subtitle">Full-Stack Web Developer</p>
+            </header>
+
+            <section class="content-section">
+                <h2>Men Haqimda</h2>
+                <p>
+                    Men zamonaviy veb-texnologiyalar yordamida funksional va ko'rkam veb-saytlar yaratishga ixtisoslashgan dasturchiman. Har bir loyihaga kreativ yondashib, muammolarni samarali hal qilishga intilaman.
+                </p>
+            </section>
+
+            <section class="content-section">
+                <h2>Mening Ko'nikmalarim</h2>
+                <div class="skills-grid">
+                    <span class="skill-badge">HTML5</span>
+                    <span class="skill-badge">CSS3 & Sass</span>
+                    <span class="skill-badge">JavaScript (ES6+)</span>
+                    <span class="skill-badge">React.js</span>
+                    <span class="skill-badge">Node.js</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">SQL & MongoDB</span>
+                    <span class="skill-badge">Git & GitHub</span>
+                </div>
+            </section>
+            
+            <section class="contact-section">
+                <a href="https://t.me/your_telegram_username" class="cta-button" target="_blank">Telegram Orqali Bog'lanish</a>
+            </section>
+
+        </div>
     </div>
-  </div>
-
-  <script src="script.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>

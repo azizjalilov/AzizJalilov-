@@ -14,61 +14,38 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.7;
-    overflow: hidden; /* Muhim: Scroll faqat konteynerda bo'ladi */
+    overflow: hidden;
 }
 
 /* --- SCROLL SNAPPING CONTAINER --- */
 .scroll-container {
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory; /* Asosiy texnologiya */
+    scroll-snap-type: y mandatory;
 }
 
 /* --- HEADER & NAVIGATION --- */
-.main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    z-index: 100;
-    transition: background-color 0.3s ease;
-}
+.main-header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; z-index: 100; transition: background-color 0.3s ease; }
 .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading-color); }
 .nav-links { list-style: none; display: flex; }
 .nav-links li { margin-left: 30px; }
 .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 600; position: relative; padding-bottom: 5px; }
 .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
 .nav-links a:hover::after { width: 100%; }
-
-/* --- HAMBURGER MENU (MOBILE) --- */
 .hamburger { display: none; background: none; border: none; z-index: 101; }
 .hamburger-box { width: 30px; height: 24px; display: inline-block; position: relative; }
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after { width: 100%; height: 3px; background-color: var(--heading-color); position: absolute; border-radius: 3px; transition: transform 0.3s ease; }
 .hamburger-inner::before, .hamburger-inner::after { content: ''; }
 .hamburger-inner::before { top: -10px; }
 .hamburger-inner::after { bottom: -10px; }
-/* Hamburger active state */
 .hamburger.is-active .hamburger-inner { transform: rotate(45deg); }
-.hamburger.is-active .hamburger-inner::before { transform: rotate(90deg) translate(-10px, 0); opacity: 0; }
-.hamburger.is-active .hamburger-inner::after { transform: rotate(-90deg) translate(0, 0); bottom: 0; }
-
+.hamburger.is-active .hamburger-inner::before { display: none; }
+.hamburger.is-active .hamburger-inner::after { transform: rotate(-90deg); bottom: 0; }
 
 /* --- SECTIONS --- */
-.section {
-    height: 100vh;
-    width: 100%;
-    scroll-snap-align: start; /* Har bir bo'limni ekran boshiga "yopishtiradi" */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 40px;
-    position: relative;
-}
+.section { height: 100vh; width: 100%; scroll-snap-align: start; display: flex; justify-content: center; align-items: center; padding: 80px 40px; position: relative; }
 .content-section { background-color: var(--content-background); }
+h2 { font-size: 2.8rem; color: var(--heading-color); margin-bottom: 20px; text-align: center;}
 
 /* HOME SECTION */
 #hero { text-align: center; }
@@ -77,22 +54,40 @@ body {
 .hero-content .subtitle { font-size: 1.5rem; color: var(--primary-color); margin-top: 10px; }
 
 /* ABOUT SECTION */
-.about-container { display: flex; align-items: center; gap: 60px; max-width: 1100px; }
-.about-image { flex: 0 0 300px; } /* Rasm hajmini qotirish */
-.about-image img { width: 100%; height: 300px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary-color); }
-.about-text h2 { font-size: 2.8rem; color: var(--heading-color); margin-bottom: 20px; }
+.about-container { max-width: 900px; text-align: center; }
+.personal-info { margin-top: 30px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.info-link { color: var(--text-color); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; transition: color 0.3s ease; }
+.info-link:hover { color: var(--primary-color); }
+.info-link i { color: var(--primary-color); font-size: 1.5rem; }
 
-/* EXPERTISE SECTION */
-.skills-container { max-width: 900px; text-align: center; }
-h2 { font-size: 2.8rem; color: var(--heading-color); margin-bottom: 30px; }
-.skills-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-.skill-badge { background-color: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; font-weight: 500; }
-
-/* PROJECTS SECTION */
-.projects-container { max-width: 1100px; width: 100%; text-align: center; }
-.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 40px; }
-.project-card { background: var(--background-color); padding: 30px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: left; }
-.project-card h3 { color: var(--heading-color); margin-bottom: 10px; }
+/* PORTFOLIO SECTION */
+.projects-container { max-width: 1400px; width: 100%; text-align: center; }
+.projects-subtitle { margin-bottom: 40px; font-size: 1.1rem; color: var(--text-color); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    background: var(--background-color);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.portfolio-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
 
 /* CONTACT SECTION */
 .contact-container { width: 100%; max-width: 800px; text-align: center; }
@@ -106,18 +101,16 @@ h2 { font-size: 2.8rem; color: var(--heading-color); margin-bottom: 30px; }
 .animated-section.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 768px) {
-    body { overflow: auto; } /* Mobile'da scroll-container ishlatmaslik yaxshiroq */
+    body { overflow: auto; }
     .scroll-container { overflow-y: auto; scroll-snap-type: none; height: auto; }
-    .section { height: auto; min-height: 100vh; }
-    
+    .section { height: auto; min-height: 100vh; padding: 80px 20px; }
     .main-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--background-color); display: flex; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
     .main-nav.is-active { transform: translateX(0); }
     .nav-links { flex-direction: column; text-align: center; }
     .nav-links li { margin: 20px 0; }
     .nav-links a { font-size: 1.5rem; }
     .hamburger { display: block; }
-
-    .hero-content h1 { font-size: 2.5rem; }
-    .about-container { flex-direction: column; }
-    .projects-grid { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
 }
+

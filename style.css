@@ -29,9 +29,35 @@ main { width: 100%; }
 
 /* HERO SECTION */
 .hero-content { font-size: 4vw; font-weight: 700; color: var(--heading-color); line-height: 1.2; }
-.hero-line { overflow: hidden; /* Animatsiya uchun */ }
+.hero-line { overflow: hidden; }
 .hero-line span { display: block; }
 .cta-link { color: var(--accent-color); text-decoration: none; font-size: 1.2rem; font-weight: 500; margin-top: 20px; display: inline-block; }
+
+/* --- ABOUT SECTION WITH PROFILE PICTURE --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Rasm uchun 1 qism, matn uchun 2 qism joy */
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.about-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-picture {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* DUMALOQ SHAKL UCHUN */
+    object-fit: cover;
+    border: 4px solid var(--accent-color); /* RAMKA (BORDER) UCHUN */
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4); /* Ramka atrofidagi nur */
+}
+.about-text-wrapper .section-intro {
+    max-width: 100%; /* Matnni to'liq egallashi uchun */
+}
 
 /* CV SECTION */
 .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
@@ -64,16 +90,27 @@ main { width: 100%; }
 .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; }
 #modal-title { font-size: 2rem; margin-bottom: 20px; }
 .modal-gallery-wrapper { width: 100%; height: calc(100% - 80px); overflow: hidden; }
-.modal-gallery { display: flex; height: 100%; gap: 20px; overflow-x: auto; /* Horizontal scroll */ }
+.modal-gallery { display: flex; height: 100%; gap: 20px; overflow-x: auto; }
 .modal-gallery-item { flex-shrink: 0; width: auto; height: 100%; text-align: center; }
 .modal-gallery-item img { height: 85%; width: auto; object-fit: contain; }
 .modal-gallery-item p { margin-top: 10px; color: #aaa; }
 
-/* ADAPTIVE DESIGN */
+/* --- ADAPTIVE DESIGN --- */
 @media (max-width: 768px) {
     .section { padding: 80px 20px; }
     .main-header { padding: 20px; }
     .hero-content { font-size: 8vw; }
+
+    .about-grid {
+        grid-template-columns: 1fr; /* Mobil qurilmada rasm tepada, matn pastda bo'ladi */
+        text-align: center;
+    }
+    .profile-picture {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 30px;
+    }
+
     .cv-grid { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
     .contact-links a { display: block; margin-bottom: 20px; }

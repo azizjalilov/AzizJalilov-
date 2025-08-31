@@ -1,100 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sizning Ismingiz | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Aziz Jalilov — 3D portfolio. Professional 3D animation and interactive landing for portfolio." />
+  <title>Aziz Jalilov — 3D Portfolio</title>
+
+  <!-- Favicons (optional) -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google font (light, professional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-
-    <canvas id="bg"></canvas>
-
-    <header>
-        <a href="#" class="logo">Portfolio</a>
-        <nav>
-            <ul>
-                <li><a href="#about">Men Haqimda</a></li>
-                <li><a href="#projects">Loyihalarim</a></li>
-                <li><a href="#skills">Ko'nikmalarim</a></li>
-                <li><a href="#contact">Bog'lanish</a></li>
-            </ul>
-        </nav>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">Aziz <span class="dot">.</span> Jalilov</div>
+      <nav class="nav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Ismingiz Familiyangiz</h1>
-                <p>Veb-dasturchi | 3D Dizayn Ishqibozi</p>
-                <a href="#projects" class="cta-button">Loyihalarimni Ko'rish</a>
-            </div>
-        </section>
+    <main class="hero">
+      <!-- Left content -->
+      <section class="hero-content">
+        <h1 class="title">3D Product · Interaction · Experience</h1>
+        <p class="subtitle">Professional 3D animations & interactive web experiences. Architect by training — designer by passion.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn">Portfolio</a>
+          <a href="#contact" class="btn ghost">Hire me</a>
+        </div>
+        <div class="badges">
+          <span>Three.js</span>
+          <span>WebGL</span>
+          <span>Interactive</span>
+        </div>
+      </section>
 
-        <section id="about" class="content-section">
-            <h2>Men Haqimda</h2>
-            <p>Bu yerga o'zingiz haqingizda qisqacha, lekin qiziqarli ma'lumot yozing. Masalan, nimalarga qiziqishingiz, qanday texnologiyalar bilan ishlashingiz va kelajakdagi maqsadlaringiz haqida yozishingiz mumkin. Bu bo'lim sizning shaxsiyatingizni ochib berishi kerak.</p>
-        </section>
-
-        <section id="projects" class="content-section">
-            <h2>Loyihalarim</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x300.png?text=Loyiha+1" alt="Loyiha 1">
-                    <h3>Loyiha Nomi 1</h3>
-                    <p>Loyiha haqida qisqacha tavsif. Qanday texnologiyalardan foydalanilgani va uning maqsadi.</p>
-                    <a href="#" target="_blank">Ko'rish</a>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x300.png?text=Loyiha+2" alt="Loyiha 2">
-                    <h3>Loyiha Nomi 2</h3>
-                    <p>Loyiha haqida qisqacha tavsif. Qanday texnologiyalardan foydalanilgani va uning maqsadi.</p>
-                    <a href="#" target="_blank">Ko'rish</a>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x300.png?text=Loyiha+3" alt="Loyiha 3">
-                    <h3>Loyiha Nomi 3</h3>
-                    <p>Loyiha haqida qisqacha tavsif. Qanday texnologiyalardan foydalanilgani va uning maqsadi.</p>
-                    <a href="#" target="_blank">Ko'rish</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="content-section">
-            <h2>Ko'nikmalarim</h2>
-            <div class="skills-container">
-                <div class="skill">HTML5</div>
-                <div class="skill">CSS3</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Three.js</div>
-                <div class="skill">GSAP</div>
-                <div class="skill">React</div>
-                <div class="skill">Node.js</div>
-                <div class="skill">Figma</div>
-            </div>
-        </section>
-
-        <section id="contact" class="content-section">
-            <h2>Bog'lanish</h2>
-            <p>Men bilan bog'lanish uchun quyidagi email manziliga yozing yoki ijtimoiy tarmoqlardagi sahifalarimga o'ting.</p>
-            <a href="mailto:emailingiz@example.com" class="contact-link">emailingiz@example.com</a>
-            <div class="social-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">Telegram</a>
-            </div>
-        </section>
+      <!-- Right: 3D Canvas -->
+      <section class="hero-canvas">
+        <canvas id="scene"></canvas>
+        <!-- subtle overlay text on 3D -->
+        <div class="canvas-overlay">
+          <div class="role">Front-end / 3D · Architect</div>
+        </div>
+      </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Ismingiz Familiyangiz. Barcha huquqlar himoyalangan.</p>
+    <!-- Work / Portfolio preview -->
+    <section id="work" class="work">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb">3D Animation</div>
+          <h3>Interactive Showcase</h3>
+          <p>Full-screen WebGL scene with interactive lighting and performance optimization.</p>
+        </article>
+        <article class="card">
+          <div class="thumb">Architectural</div>
+          <h3>Architectural Visuals</h3>
+          <p>High-detail models, rendered for presentation and client review.</p>
+        </article>
+        <article class="card">
+          <div class="thumb">Branding</div>
+          <h3>Motion Branding</h3>
+          <p>Logo animations and looping hero visuals for landing pages.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <p>Men Kimyo International University — Architecture bakalavriat bitiruvchisi. Web & 3D dizayn, interaktiv tajriba yarataman. Loyihalarim to‘g‘risida batafsil ko‘rish uchun "Portfolio"ga o‘tishingiz mumkin.</p>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="contact">
+      <div>
+        <h3>Get in touch</h3>
+        <p>Email: <a href="mailto:Azizjalilov575@gmail.com">Azizjalilov575@gmail.com</a></p>
+      </div>
+      <small>© <span id="year"></span> Aziz Jalilov — All rights reserved.</small>
     </footer>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-
-    <script src="script.js"></script>
-
+  <!-- Three.js (ES modules) -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>

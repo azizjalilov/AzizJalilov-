@@ -1,79 +1,110 @@
-// 3D sahna sozlamalari
+// Scene, Camera, Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ alpha: true }); // alpha: true for transparent background
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-// Yulduzlar (zarralar) yaratish
-const starGeometry = new THREE.BufferGeometry();
-const starCount = 10000;
-const posArray = new Float32Array(starCount * 3);
-
-for (let i = 0; i < starCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 100;
-}
-
-starGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-const starMaterial = new THREE.PointsMaterial({
-    size: 0.015,
-    color: 0x00ffff,
+// 3D Object (Icosahedron)
+const geometry = new THREE.IcosahedronGeometry(1.5, 0);
+const material = new THREE.MeshStandardMaterial({
+    color: 0x00ffc3,
+    wireframe: true,
 });
-const starMesh = new THREE.Points(starGeometry, starMaterial);
-scene.add(starMesh);
+const icosahedron = new THREE.Mesh(geometry, material);
+scene.add(icosahedron);
 
 camera.position.z = 5;
 
-// Sichqoncha harakatini kuzatish
-let mouseX = 0;
-let mouseY = 0;
-document.addEventListener('mousemove', (event) => {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
+// Lights
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+scene.add(ambientLight);
+
+// Mouse Movement Interaction
+const mouse = { x: 0, y: 0 };
+window.addEventListener('mousemove', (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
 
-// Animatsiya funksiyasi
+// Animation Loop
 function animate() {
     requestAnimationFrame(animate);
-    
-    // Yulduzlarning aylanishi
-    starMesh.rotation.y += 0.0002;
-    starMesh.rotation.x += 0.0002;
-    
-    // Kamera sichqonchaga qarab harakatlanishi
-    if (mouseX > 0) {
-        camera.position.x += (mouseX - window.innerWidth / 2) * 0.000005 - camera.position.x * 0.01;
-        camera.position.y += -(mouseY - window.innerHeight / 2) * 0.000005 - camera.position.y * 0.01;
-    }
-    
-    camera.lookAt(scene.position);
+
+    icosahedron.rotation.x += 0.001;
+    icosahedron.rotation.y += 0.001;
+
+    // Mouse follow effect
+    const target = new THREE.Vector3(mouse.x * 2, mouse.y * 2, camera.position.z);
+    icosahedron.position.lerp(target, 0.05);
+    pointLight.position.lerp(new THREE.Vector3(mouse.x * 10, mouse.y * 10, 5), 0.05);
+
     renderer.render(scene, camera);
 }
+
 animate();
 
-// Oyna o'lchami o'zgarganda moslashish
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero Section Animation
+gsap.to('.hero-content', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: 'power3.out',
+    delay: 0.5
+});
+
+// 3D Object Scroll Animation
+gsap.to(icosahedron.scale, {
+    scrollTrigger: {
+        trigger: '#about',
+        start: 'top bottom',
+        end: 'top top',
+        scrub: true
+    },
+    x: 0.5,
+    y: 0.5,
+    z: 0.5
+});
+
+gsap.to(icosahedron.position, {
+    scrollTrigger: {
+        trigger: '#about',
+        start: 'top bottom',
+        end: 'top top',
+        scrub: true
+    },
+    x: -2,
+    y: 1
+});
+
+// Content Sections Fade-in Animation
+const sections = document.querySelectorAll('.content-section');
+sections.forEach(section => {
+    gsap.to(section, {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out'
+    });
+});
+
+// Window Resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// GSAP ScrollTrigger animatsiyalari
-gsap.registerPlugin(ScrollTrigger);
-
-const sections = document.querySelectorAll('.content-section');
-
-sections.forEach(section => {
-    gsap.to(section, {
-        opacity: 1,
-        y: 0,
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 80%', // Seksiya 80% ko'ringanda animatsiya boshlanadi
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse', // Pastga skrollda o'ynaydi, yuqoriga skrollda orqaga qaytadi
-        },
-        duration: 1,
-        ease: 'power3.out',
-    });
-});

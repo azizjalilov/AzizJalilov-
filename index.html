@@ -1,87 +1,105 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aziz Jalilov | Ideal CV</title>
+    <title>Aziz Jalilov | Architectural Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#hero" class="nav-link">Bosh Sahifa</a>
-        <a href="#about" class="nav-link">Men Haqimda</a>
-        <a href="#skills" class="nav-link">Ko'nikmalar</a>
-        <a href="#projects" class="nav-link">Loyihalarim</a>
-        <a href="#contact" class="nav-link">Bog'lanish</a>
-    </nav>
+    <header class="main-header">
+        <div class="logo">A.J</div>
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </header>
 
-    <section id="hero" class="section">
-        <div id="canvas-container"></div>
-        <div class="hero-content">
-            <h1>Aziz Jalilov</h1>
-            <p class="subtitle">Full-Stack Web Developer & Creative Coder</p>
-        </div>
-        <a href="#about" class="scroll-down-arrow" aria-label="Pastga o'tish">
-            <span></span>
-        </a>
-    </section>
+    <div class="scroll-container">
 
-    <main class="content-wrapper">
-        <section id="about" class="section animated-section">
+        <section id="hero" class="section">
+            <div id="canvas-container"></div>
+            <div class="hero-content">
+                <h1>Aziz Jalilov</h1>
+                <p class="subtitle">Principal Architect & Urban Designer</p>
+            </div>
+        </section>
+
+        <section id="about" class="section content-section animated-section">
             <div class="about-container">
-                <img src="rasm.jpg" alt="Aziz Jalilov" class="profile-picture">
+                <div class="about-image">
+                    <img src="rasm.jpg" alt="Aziz Jalilov - Architect">
+                </div>
                 <div class="about-text">
-                    <h2>Men Haqimda</h2>
+                    <h2>Designing The Future</h2>
                     <p>
-                        Men funksional, qulay va ko'rkam veb-saytlar yaratishga ixtisoslashgan dasturchiman. Har bir loyihaga chuqur yondashib, muammolarni zamonaviy texnologiyalar yordamida samarali hal qilishga intilaman. Bo'sh vaqtlarimda yangi texnologiyalarni o'rganishni va o'z bilimlarimni amaliyotda qo'llashni yaxshi ko'raman.
+                        I am an architect with a passion for creating spaces that are not only aesthetically pleasing but also sustainable and functional. With over a decade of experience, I merge innovative design with cutting-edge technology to bring visionary concepts to life. My philosophy is that great architecture can shape a better world.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section animated-section">
+        <section id="skills" class="section content-section animated-section">
             <div class="skills-container">
-                <h2>Texnik Ko'nikmalarim</h2>
+                <h2>Core Expertise</h2>
                 <div class="skills-grid">
-                    <span class="skill-badge">HTML5</span>
-                    <span class="skill-badge">CSS3 & Sass</span>
-                    <span class="skill-badge">JavaScript (ES6+)</span>
-                    <span class="skill-badge">React.js / Next.js</span>
-                    <span class="skill-badge">Node.js</span>
-                    <span class="skill-badge">Python & Django</span>
-                    <span class="skill-badge">SQL (PostgreSQL)</span>
-                    <span class="skill-badge">MongoDB</span>
-                    <span class="skill-badge">Git & GitHub</span>
-                    <span class="skill-badge">Docker</span>
-                    <span class="skill-badge">Figma</span>
-                    <span class="skill-badge">Three.js</span>
+                    <span class="skill-badge">Architectural Design</span>
+                    <span class="skill-badge">Sustainable & Green Design</span>
+                    <span class="skill-badge">Urban Planning</span>
+                    <span class="skill-badge">3D Visualization & VR</span>
+                    <span class="skill-badge">Revit & BIM</span>
+                    <span class="skill-badge">AutoCAD</span>
+                    <span class="skill-badge">SketchUp & Rhino</span>
+                    <span class="skill-badge">Project Management</span>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section animated-section">
-            <div class="projects-container">
-                <h2>Tanlangan Loyihalarim</h2>
+        <section id="projects" class="section content-section animated-section">
+             <div class="projects-container">
+                <h2>Featured Projects</h2>
                 <div class="projects-grid">
-                    <div class="project-card"><h3>Loyiha Nomi 1</h3><p>Online o'quv platformasi uchun interaktiv veb-sayt.</p><a href="#" class="project-link">Ko'proq bilish →</a></div>
-                    <div class="project-card"><h3>Loyiha Nomi 2</h3><p>Mobil ilova uchun yuqori unumdorlikka ega Backend (Node.js).</p><a href="#" class="project-link">GitHub'da ko'rish →</a></div>
-                    <div class="project-card"><h3>Loyiha Nomi 3</h3><p>Shaxsiy blog platformasi (React va Django).</p><a href="#" class="project-link">Saytni ko'rish →</a></div>
+                    <div class="project-card">
+                        <h3>The Vertex Tower</h3>
+                        <p>A 50-story mixed-use skyscraper focused on vertical green spaces and energy efficiency.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>"Oasis" Cultural Center</h3>
+                        <p>An award-winning public space designed with parametric architecture and local materials.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Serenity Villa</h3>
+                        <p>A private residence that seamlessly blends minimalist interior design with the natural landscape.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section animated-section">
-            <div class="contact-container neon-border">
-                <h2>Aloqa</h2>
-                <p>Mening ishlarim sizga ma'qul bo'ldimi? Keling, birgalikda ajoyib loyiha qilamiz!</p>
-                <a href="https://t.me/your_telegram_username" class="cta-button" target="_blank">Telegram Orqali Bog'laning</a>
+        <section id="contact" class="section content-section animated-section">
+            <div class="contact-container">
+                <div class="neon-border">
+                    <h2>Let's Build Together</h2>
+                    <p>Have a visionary project in mind? I'm available for collaborations and new commissions. Let's shape the future of our cities.</p>
+                    <a href="mailto:your.email@example.com" class="cta-button">Get In Touch</a>
+                </div>
             </div>
         </section>
-    </main>
+
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>

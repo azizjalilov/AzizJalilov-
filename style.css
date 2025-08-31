@@ -1,4 +1,3 @@
-/* --- [ YAKUNIY IDEAL PORTFOLIO: KREATIV DIZAYN ] --- */
 :root {
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -15,7 +14,6 @@ body { --bg: var(--lm-bg); --bg-accent: var(--lm-bg-accent); --text: var(--lm-te
 body.dark-mode { --bg: var(--dm-bg); --bg-accent: var(--dm-bg-accent); --text: var(--dm-text); --heading: var(--dm-heading); --accent: var(--dm-accent); --border: var(--dm-border); --shadow: var(--dm-shadow); --glass-bg: var(--dm-glass-bg); }
 body { background-color: var(--bg); color: var(--text); font-family: var(--font-body); }
 
-/* HEADER & THEME SWITCHER */
 .main-header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; z-index: 100; }
 .logo { font-size: 1.8rem; font-weight: 700; color: var(--heading); font-family: var(--font-heading); }
 .theme-toggle-checkbox { display: none; }
@@ -26,26 +24,21 @@ body { background-color: var(--bg); color: var(--text); font-family: var(--font-
 .toggle-icon.sun { opacity: 0; } .toggle-icon.moon { opacity: 1; }
 body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon { opacity: 0; }
 
-/* SECTIONS */
 .section { padding: 120px 50px; }
 #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
 .content-section { max-width: 1200px; margin: 0 auto; }
 .section-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--heading); margin-bottom: 60px; font-weight: 700; text-align: center; }
-
-/* PROFIL VA LOYIHA RASMLARI UCHUN TO'RTBURCHAK RAMKA */
 .profile-picture {
     width: clamp(180px, 25vw, 220px); height: clamp(180px, 25vw, 220px);
-    border-radius: 12px;  /* Dumaloq o'rniga to'rtburchak */
+    border-radius: 50%; /* DUMALOQ Rasm */
     object-fit: cover; border: 4px solid var(--accent);
-    box-shadow: 0 0 20px var(--accent), 0 0 50px var(--accent);
+    box-shadow: 0 0 20px var(--accent), inset 0 0 20px var(--accent), 0 0 50px var(--accent);
     margin-bottom: 30px; animation: gentle-glow 4s infinite alternate;
 }
-@keyframes gentle-glow { from { box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent); } to { box-shadow: 0 0 30px var(--accent), 0 0 60px var(--accent); } }
-
+@keyframes gentle-glow { from { box-shadow: 0 0 15px var(--accent), inset 0 0 15px var(--accent), 0 0 30px var(--accent); } to { box-shadow: 0 0 30px var(--accent), inset 0 0 30px var(--accent), 0 0 60px var(--accent); } }
 .hero-name { font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 5rem); color: var(--heading); line-height: 1.1; font-weight: 700; }
 .hero-subtitle { font-size: clamp(1.2rem, 3vw, 1.5rem); color: var(--text); margin-top: 15px; font-weight: 400; max-width: 600px; }
 
-/* CV & GLASSMORPHISM */
 .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .column-title { font-family: var(--font-heading); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
 .cv-item { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); padding: 30px; border-radius: 15px; transition: transform var(--transition-speed) ease; box-shadow: 0 5px 20px var(--shadow); }
@@ -54,48 +47,53 @@ body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon
 .cv-item p { font-size: 1.1rem; line-height: 1.6; }
 .cv-date { color: var(--text); opacity: 0.7; margin-top: 5px; font-size: 1rem; }
 
-/* SKILLS */
 .skills-list { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
 .skill-item { background: var(--bg-accent); border: 1px solid var(--border); color: var(--text); padding: 12px 25px; border-radius: 10px; font-size: 1.2rem; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 5px 15px var(--shadow); }
 .skill-item:hover { transform: translateY(-5px); color: var(--accent); border-color: var(--accent); }
 
-/* PROJECTS */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-.project-card { cursor: pointer; overflow: hidden; position: relative; border-radius: 12px; /* To'rtburchak ramka */ }
+.project-card { cursor: pointer; overflow: hidden; position: relative; border-radius: 15px; }
 .project-card img { width: 100%; height: 450px; object-fit: cover; display: block; transition: transform 0.6s ease; }
 .project-card:hover img { transform: scale(1.05); }
 .project-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: white; transform: translateY(100%); transition: transform 0.4s ease; }
 .project-card:hover .project-overlay { transform: translateY(0); }
 .project-overlay h3 { font-size: 1.5rem; }
 
-/* GET IN TOUCH */
-.contact-text { text-align: center; font-size: 1.5rem; max-width: 600px; margin: -20px auto 40px; }
-.contact-methods { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; }
-.contact-link, .cta-button { background: var(--bg-accent); border: 1px solid var(--border); box-shadow: 0 5px 15px var(--shadow); color: var(--text); text-decoration: none; font-size: 1.1rem; padding: 15px 25px; border-radius: 10px; display: flex; align-items: center; gap: 15px; transition: all var(--transition-speed) ease; font-weight: 500; }
-.contact-link:hover, .cta-button:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px var(--shadow); }
-.cta-button { border-color: var(--accent); color: var(--accent); animation: cta-pulse 3s infinite alternate; }
-.cta-button:hover { animation-play-state: paused; }
-@keyframes cta-pulse { from { box-shadow: 0 0 5px var(--accent); } to { box-shadow: 0 0 25px var(--accent); } }
-.contact-link i, .cta-button i { font-size: 1.5rem; }
+/* GET IN TOUCH (KONTAKT FORMASI) */
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center; }
+.contact-info h3 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--heading); margin-bottom: 15px; }
+.contact-info p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; }
+.contact-link { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease; font-weight: 500; }
+.contact-link:hover { color: var(--accent); }
+.contact-link i { font-size: 1.5rem; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text); }
+.form-group input, .form-group textarea { width: 100%; background: var(--bg-accent); border: 1px solid var(--border); padding: 14px; border-radius: 8px; color: var(--text); font-family: var(--font-body); font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--shadow); }
 
-/* MODAL */
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-.modal-content { background: var(--bg-color); width: 90%; height: 90%; max-width: 1600px; padding: 40px; position: relative; border: 1px solid var(--border); }
-.modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; }
-#modal-title { font-size: 2rem; margin-bottom: 20px; }
-.modal-gallery-wrapper { width: 100%; height: calc(100% - 80px); overflow: hidden; }
-.modal-gallery { display: flex; height: 100%; gap: 20px; overflow-x: auto; }
-.modal-gallery-item { flex-shrink: 0; width: auto; height: 100%; text-align: center; }
-.modal-gallery-item img { height: 85%; width: auto; object-fit: contain; }
-.modal-gallery-item p { margin-top: 10px; color: #aaa; }
+/* ANIMATSIYALI "SEND" TUGMASI */
+.send-button {
+    width: 100%; padding: 15px; background: var(--accent); color: var(--dm-bg);
+    border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700;
+    cursor: pointer; position: relative; overflow: hidden; transition: all 0.4s ease;
+    font-family: var(--font-heading);
+}
+.send-button .button-text { transition: opacity 0.2s ease, transform 0.2s ease; display: inline-block; }
+.send-button .button-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, 30px); font-size: 1.5rem; opacity: 0; transition: all 0.4s ease; }
+.send-button.sending .button-text { opacity: 0; transform: translateY(-30px); }
+.send-button.sending .button-icon.envelope { opacity: 1; transform: translate(-50%, -50%); animation: fly-away 1.5s 0.2s ease-in-out forwards; }
+@keyframes fly-away {
+    20% { transform: translate(-50%, -50%) scale(0.9); }
+    100% { transform: translate(200px, -150px) scale(0.5); opacity: 0; }
+}
+.send-button.success { background-color: #28a745; }
+.send-button.success .button-icon.success { opacity: 1; transform: translate(-50%, -50%); }
 
-/* ADAPTIVE DESIGN (MUKAMMAL) */
+.modal { /* Oldingi versiyadagi kabi */ }
 @media (max-width: 900px) {
     .main-header { padding: 15px 20px; }
     .section { padding: 80px 20px; }
     .cv-grid { grid-template-columns: 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
     .projects-grid { grid-template-columns: 1fr; }
-    .contact-methods { flex-direction: column; gap: 20px; }
-    .modal-content { width: 95%; height: 85%; }
 }
-

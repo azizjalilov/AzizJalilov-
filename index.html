@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="dark-mode"> <header class="main-header">
+<body class="dark-mode">
+
+    <header class="main-header">
         <div class="logo">AJ.</div>
         <div class="theme-switcher">
             <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" checked>
@@ -36,19 +38,11 @@
              <div class="cv-grid">
                 <div class="cv-column">
                     <h3 class="column-title">Experience</h3>
-                    <div class="cv-item">
-                        <h4>3D Modelling Lab Assistant</h4>
-                        <p>Kimyo International University in Tashkent</p>
-                        <p class="cv-date">1 Year Experience</p>
-                    </div>
+                    <div class="cv-item"><h4>3D Modelling Lab Assistant</h4><p>Kimyo International University in Tashkent</p><p class="cv-date">1 Year Experience</p></div>
                 </div>
                 <div class="cv-column">
                     <h3 class="column-title">Education</h3>
-                    <div class="cv-item">
-                        <h4>BSc, Architecture and Urban Design</h4>
-                        <p>Kimyo International University in Tashkent</p>
-                        <p class="cv-date">2021 – 2025</p>
-                    </div>
+                    <div class="cv-item"><h4>BSc, Architecture and Urban Design</h4><p>Kimyo International University in Tashkent</p><p class="cv-date">2021 – 2025</p></div>
                 </div>
             </div>
         </section>
@@ -56,11 +50,7 @@
         <section id="skills" class="section content-section">
             <h2 class="section-title">Technical Expertise</h2>
             <div class="skills-list">
-                <div class="skill-item">AutoCAD</div>
-                <div class="skill-item">Lumion</div>
-                <div class="skill-item">SketchUp</div>
-                <div class="skill-item">3D Modelling</div>
-                <div class="skill-item">Visualization</div>
+                <div class="skill-item">AutoCAD</div><div class="skill-item">Lumion</div><div class="skill-item">SketchUp</div><div class="skill-item">3D Modelling</div><div class="skill-item">Visualization</div>
             </div>
         </section>
 
@@ -75,16 +65,34 @@
 
         <section id="contact" class="section content-section">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="contact-text">I'm actively seeking new opportunities. Let's connect and create something remarkable.</p>
-            <div class="contact-methods">
-                 <a href="https://www.linkedin.com/in/archsirius" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn Profile</span>
-                </a>
-                <a href="mailto:your.email@example.com" class="cta-button">
-                    <i class="fas fa-envelope"></i>
-                    <span>Send an Email</span>
-                </a>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's build the future.</h3>
+                    <p>I'm actively seeking new opportunities. If you have a project in mind or just want to connect, feel free to reach out.</p>
+                    <a href="https://www.linkedin.com/in/archsirius" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>/archsirius</span>
+                    </a>
+                </div>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="send-button" id="send-button">
+                        <span class="button-text">Send Message</span>
+                        <span class="button-icon envelope"><i class="fas fa-envelope"></i></span>
+                        <span class="button-icon success"><i class="fas fa-check"></i></span>
+                    </button>
+                </form>
             </div>
         </section>
     </main>

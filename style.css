@@ -14,50 +14,51 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    overscroll-behavior: none;
 }
 .main-header { position: fixed; top: 0; left: 0; width: 100%; padding: 25px 50px; z-index: 100; }
 .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading-color); }
-main { width: 100%; }
+main { width: 100%; position: relative; z-index: 1; }
+
+/* --- ANIMATED GRID BACKGROUND --- */
+.background-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveGrid 20s linear infinite;
+    z-index: 0;
+}
+@keyframes moveGrid { from { background-position: 0 0; } to { background-position: 50px 50px; } }
 
 /* --- SECTION STYLES --- */
-.section { padding: 100px 50px; min-height: 60vh; border-bottom: 1px solid var(--border-color); }
-#hero { min-height: 100vh; display: flex; align-items: center; border-bottom: none; }
+.section { padding: 120px 50px; min-height: 60vh; border-bottom: 1px solid var(--border-color); }
+#hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: none; }
 .content-section { max-width: 1200px; margin: 0 auto; }
-.section-title { font-size: 2.5rem; color: var(--heading-color); margin-bottom: 50px; font-weight: 500; }
-.section-intro { font-size: 1.8rem; line-height: 1.5; max-width: 800px; font-weight: 300; }
+.section-title { font-size: 2.5rem; color: var(--heading-color); margin-bottom: 50px; font-weight: 500; text-align: center; }
 
-/* HERO SECTION */
-.hero-content { font-size: 4vw; font-weight: 700; color: var(--heading-color); line-height: 1.2; }
-.hero-line { overflow: hidden; }
-.hero-line span { display: block; }
-.cta-link { color: var(--accent-color); text-decoration: none; font-size: 1.2rem; font-weight: 500; margin-top: 20px; display: inline-block; }
-
-/* --- ABOUT SECTION WITH PROFILE PICTURE --- */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Rasm uchun 1 qism, matn uchun 2 qism joy */
-    align-items: center;
-    gap: 60px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-.about-image-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* HERO SECTION & NEON PROFILE PICTURE */
+.profile-picture-wrapper { margin-bottom: 25px; }
 .profile-picture {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%; /* DUMALOQ SHAKL UCHUN */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--accent-color); /* RAMKA (BORDER) UCHUN */
-    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4); /* Ramka atrofidagi nur */
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color), inset 0 0 15px var(--accent-color);
+    animation: neon-pulse 3s infinite alternate;
 }
-.about-text-wrapper .section-intro {
-    max-width: 100%; /* Matnni to'liq egallashi uchun */
-}
+@keyframes neon-pulse { from { box-shadow: 0 0 10px var(--accent-color), inset 0 0 10px var(--accent-color); } to { box-shadow: 0 0 30px var(--accent-color), inset 0 0 30px var(--accent-color); } }
+.hero-name { font-size: 4rem; font-weight: 700; color: var(--heading-color); line-height: 1.1; }
+.hero-subtitle { font-size: 1.5rem; color: var(--text-color); margin-top: 10px; font-weight: 300; }
+.scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); }
+.mouse-icon { width: 25px; height: 45px; border: 2px solid var(--text-color); border-radius: 20px; position: relative; }
+.mouse-icon::before { content: ''; width: 4px; height: 8px; background: var(--text-color); border-radius: 2px; position: absolute; left: 50%; transform: translateX(-50%); animation: scroll-anim 2s infinite; }
+@keyframes scroll-anim { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 20px; } }
 
 /* CV SECTION */
 .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
@@ -67,26 +68,45 @@ main { width: 100%; }
 .cv-item p { font-size: 1.1rem; }
 .cv-date { color: #888; margin-top: 5px; }
 
-/* SKILLS SECTION */
-.skills-list { display: flex; flex-wrap: wrap; gap: 15px; }
-.skill-item { font-size: 1.5rem; padding: 10px 20px; border: 1px solid var(--border-color); border-radius: 30px; }
-
 /* PROJECTS SECTION */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-.project-card { cursor: pointer; overflow: hidden; position: relative; }
+.project-card { cursor: pointer; overflow: hidden; position: relative; border-radius: 5px; border: 1px solid var(--border-color); }
 .project-card img { width: 100%; height: 400px; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
 .project-card:hover img { transform: scale(1.05); }
 .project-title { position: absolute; bottom: 0; left: 0; padding: 20px; color: white; font-size: 1.2rem; font-weight: 500; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%; }
 
 /* CONTACT SECTION */
-.contact-text { font-size: 1.8rem; max-width: 600px; margin-bottom: 40px; }
-.contact-links a { color: var(--heading-color); text-decoration: none; font-size: 2.5rem; margin-right: 30px; font-weight: 500; position: relative; }
-.contact-links a:after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0%; height: 3px; background-color: var(--accent-color); transition: width 0.3s ease; }
-.contact-links a:hover:after { width: 100%; }
+.contact-text { text-align: center; font-size: 1.5rem; max-width: 600px; margin: 0 auto 40px; }
+.contact-methods { display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 50px; }
+.contact-methods a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; transition: color 0.3s ease; }
+.contact-methods a:hover { color: var(--accent-color); }
+.contact-methods i { font-size: 1.5rem; }
+.cta-wrapper { text-align: center; }
+.cta-button {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    padding: 15px 40px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    animation: neon-pulse-button 2s infinite alternate;
+}
+.cta-button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+@keyframes neon-pulse-button {
+    from { box-shadow: 0 0 5px var(--accent-color), inset 0 0 5px var(--accent-color); }
+    to { box-shadow: 0 0 20px var(--accent-color), inset 0 0 20px var(--accent-color); }
+}
 
 /* --- PROJECT MODAL --- */
-.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; display: none; align-items: center; justify-content: center; }
-.modal-content { background: var(--bg-color); width: 90%; height: 90%; max-width: 1600px; padding: 40px; position: relative; }
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.modal-content { background: var(--bg-color); width: 90%; height: 90%; max-width: 1600px; padding: 40px; position: relative; border: 1px solid var(--border-color); }
 .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; }
 #modal-title { font-size: 2rem; margin-bottom: 20px; }
 .modal-gallery-wrapper { width: 100%; height: calc(100% - 80px); overflow: hidden; }
@@ -95,24 +115,12 @@ main { width: 100%; }
 .modal-gallery-item img { height: 85%; width: auto; object-fit: contain; }
 .modal-gallery-item p { margin-top: 10px; color: #aaa; }
 
-/* --- ADAPTIVE DESIGN --- */
+/* ADAPTIVE DESIGN */
 @media (max-width: 768px) {
     .section { padding: 80px 20px; }
     .main-header { padding: 20px; }
-    .hero-content { font-size: 8vw; }
-
-    .about-grid {
-        grid-template-columns: 1fr; /* Mobil qurilmada rasm tepada, matn pastda bo'ladi */
-        text-align: center;
-    }
-    .profile-picture {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 30px;
-    }
-
+    .hero-name { font-size: 3rem; }
+    .profile-picture { width: 150px; height: 150px; }
     .cv-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .contact-links a { display: block; margin-bottom: 20px; }
-    .modal-content { width: 95%; height: 85%; }
+    .contact-methods { flex-direction: column; gap: 20px; }
 }

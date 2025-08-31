@@ -1,181 +1,71 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional 3D Sahna | WOW Effekt</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #000000;
-            color: white;
-            font-family: 'Arial', sans-serif;
-        }
-        canvas {
-            display: block;
-        }
-        #loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            text-align: center;
-        }
-    </style>
+    <title>Aziz Jalilov | 3D Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="loader">Yuklanmoqda...</div>
-    <canvas id="c"></canvas>
+    
+    <div id="canvas-container"></div>
 
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-            }
-        }
-    </script>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="#hero" class="nav-link">Bosh Sahifa</a>
+                <a href="#about" class="nav-link">Men Haqimda</a>
+                <a href="#projects" class="nav-link">Loyihalarim</a>
+                <a href="#contact" class="nav-link">Bog'lanish</a>
+            </nav>
+        </header>
 
-    <script type="module">
-        import * as THREE from 'three';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-        import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+        <main>
+            <section id="hero">
+                <div class="hero-content">
+                    <h1>Aziz Jalilov</h1>
+                    <p>Frontend Dasturchi | Kreativ Kod Ustasi</p>
+                </div>
+            </section>
 
-        // O'ZGARUVCHILARNI E'LON QILISH
-        let scene, camera, renderer, controls, composer;
+            <section id="about" class="content-section">
+                <h2>Men Haqimda</h2>
+                <p>Men zamonaviy va interaktiv veb-saytlar yaratishga ixtisoslashgan dasturchiman. Har bir loyihamda foydalanuvchi tajribasini birinchi o'ringa qo'yaman va eng so'nggi texnologiyalardan unumli foydalanaman.</p>
+            </section>
 
-        // ASOSIY FUNKSIYANI ISHGA TUSHIRISH
-        init();
+            <section id="projects" class="content-section">
+                <h2>Loyihalarim</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Loyiha 1</h3>
+                        <p>Bu yerda birinchi loyihangiz haqida qisqacha ma'lumot bo'ladi.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Loyiha 2</h3>
+                        <p>Bu yerda ikkinchi loyihangiz haqida qisqacha ma'lumot bo'ladi.</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Loyiha 3</h3>
+                        <p>Uchinchi loyihangiz haqida qisqacha ma'lumot yozing.</p>
+                    </div>
+                </div>
+            </section>
 
-        function init() {
-            // ----- 1. SAHNANI YARATISH -----
-            scene = new THREE.Scene();
+            <section id="contact" class="content-section">
+                <h2>Bog'lanish</h2>
+                <p>Men bilan bog'lanish uchun <a href="mailto:emailingiz@gmail.com">email</a> yozing yoki ijtimoiy tarmoqlarda kuzatib boring.</p>
+                <div class="social-links">
+                    <a href="#">Telegram</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </section>
+        </main>
+    </div>
 
-            const loaderElement = document.getElementById('loader');
-
-            // ----- 2. RENDERERNI SOZLASH -----
-            const canvas = document.querySelector('#c');
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            renderer.toneMapping = THREE.ACESFilmicToneMapping; // Kinematografik ranglar
-            renderer.toneMappingExposure = 1.2;
-            renderer.outputEncoding = THREE.sRGBEncoding;
-            renderer.shadowMap.enabled = true; // Soyalarni yoqish
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-            // ----- 3. KAMERANI YARATISH -----
-            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(0, 2, 7);
-
-            // ----- 4. INTERAKTIV BOSHQARUV -----
-            controls = new OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true; // Silliq harakat uchun
-            controls.dampingFactor = 0.05;
-            controls.minDistance = 4; // Minimal yaqinlashish
-            controls.maxDistance = 15; // Maksimal uzoqlashish
-            controls.target.set(0, 1, 0); // Kamera markazi
-            controls.update();
-
-            // ----- 5. "WOW" YORUG'LIGI (HDRI MUHITI) -----
-            const rgbeLoader = new RGBELoader();
-            rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/empty_warehouse_01_1k.hdr', (texture) => {
-                texture.mapping = THREE.EquirectangularReflectionMapping;
-                scene.background = texture; // Sahna orqa foni
-                scene.environment = texture; // Ob'ektlardagi akslar uchun
-            });
-            
-            // ----- 6. DINAMIK SOYALAR UCHUN YORUG'LIK -----
-            const dirLight = new THREE.DirectionalLight(0xffffff, 2);
-            dirLight.position.set(5, 10, 7.5);
-            dirLight.castShadow = true;
-            dirLight.shadow.mapSize.width = 2048;
-            dirLight.shadow.mapSize.height = 2048;
-            scene.add(dirLight);
-
-            // Pol (yer) yaratish
-            const ground = new THREE.Mesh(
-                new THREE.PlaneGeometry(20, 20),
-                new THREE.MeshStandardMaterial({
-                    color: 0x111111,
-                    metalness: 0.1,
-                    roughness: 0.4
-                })
-            );
-            ground.rotation.x = -Math.PI / 2;
-            ground.receiveShadow = true; // Soyalarni qabul qilish
-            scene.add(ground);
-
-
-            // ----- 7. PROFESSIONAL 3D MODELNI YUKLASH -----
-            const gltfLoader = new GLTFLoader();
-            gltfLoader.load('https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf', (gltf) => {
-                const model = gltf.scene;
-                model.scale.set(1.5, 1.5, 1.5);
-                model.position.y = 1.5;
-                
-                // Modelning har bir qismida soya berishni yoqish
-                model.traverse((child) => {
-                    if (child.isMesh) {
-                        child.castShadow = true;
-                        child.receiveShadow = true;
-                    }
-                });
-
-                scene.add(model);
-                loaderElement.style.display = 'none'; // Yuklash tugadi
-            }, 
-            // Yuklanish jarayoni
-            (xhr) => {
-                const percent = Math.floor((xhr.loaded / xhr.total) * 100);
-                loaderElement.innerText = `${percent}% yuklandi...`;
-            },
-            // Xatolik holati
-            (error) => {
-                loaderElement.innerText = "Modelni yuklashda xatolik!";
-                console.error(error);
-            });
-
-
-            // ----- 8. POST-PROCESSING (BLOOM EFEKTI) -----
-            // Bu qism tasvirga qo'shimcha "jilo" va "nur" beradi
-            const renderScene = new RenderPass(scene, camera);
-            const bloomPass = new UnrealBloomPass(
-                new THREE.Vector2(window.innerWidth, window.innerHeight),
-                0.7, // intensity
-                0.1, // radius
-                0.85 // threshold
-            );
-
-            composer = new EffectComposer(renderer);
-            composer.addPass(renderScene);
-            composer.addPass(bloomPass);
-
-            // Oyna o'lchami o'zgarganda moslashish
-            window.addEventListener('resize', onWindowResize);
-
-            // Animatsiya tsiklini ishga tushirish
-            animate();
-        }
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            composer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update(); // Har kadrda boshqaruvni yangilash
-            composer.render(); // Oddiy renderer.render() o'rniga composer ishlatiladi
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

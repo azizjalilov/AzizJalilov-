@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. LOYIHALAR HAQIDA MA'LUMOT (RASMLAR VA YOZUQLAR) ---
-    // Rasmlaringiz nomini va yozuvlarni shu yerda o'zgartirasiz
     const projectsData = {
         '1': {
             title: 'Urban Planning Model',
@@ -29,11 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-
     // --- 2. GSAP KINEMATIK ANIMATSIYALARI ---
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero Section Animation
     gsap.from(".hero-line span", {
         y: "100%",
         ease: "power3.out",
@@ -41,10 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2
     });
 
-    // Boshqa bo'limlar uchun umumiy animatsiya
     const sections = gsap.utils.toArray('.content-section');
     sections.forEach(section => {
-        const elements = section.querySelectorAll(".section-title, .section-intro, .cv-item, .skill-item, .project-card, .contact-text, .contact-links a");
+        const elements = section.querySelectorAll(".section-title, .section-intro, .cv-item, .skill-item, .project-card, .contact-text, .contact-links a, .profile-picture");
         gsap.from(elements, {
             y: 50,
             opacity: 0,
@@ -58,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // --- 3. INTERAKTIV PROJECT MODAL LOGIKASI ---
     const modal = document.getElementById('project-modal');
     const modalTitle = document.getElementById('modal-title');
@@ -71,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!project) return;
 
         modalTitle.textContent = project.title;
-        modalGallery.innerHTML = ''; // Galereyani tozalash
+        modalGallery.innerHTML = '';
 
         project.images.forEach(image => {
             const item = document.createElement('div');
@@ -81,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Orqa fon scrollini o'chirish
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
         modal.style.display = 'none';
-        document.body.style.overflow = ''; // Scrollni qaytarish
+        document.body.style.overflow = '';
     }
 
     projectCards.forEach(card => {
@@ -97,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeButton.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) { // Faqat qora fonga bosganda yopilishi uchun
+        if (e.target === modal) {
             closeModal();
         }
     });

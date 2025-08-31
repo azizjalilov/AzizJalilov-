@@ -1,63 +1,66 @@
-// script.js (classic Three.js, no modules)
+// Scene setup
+const scene = new THREE.Scene();
+
+// Camera
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.z = 5;
 
 // Renderer
-const canvas = document.getElementById('scene');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+const renderer = new THREE.WebGLRenderer({
+  canvas: document.querySelector('#bg'),
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(canvas.clientWidth || window.innerWidth, canvas.clientHeight || 520);
 
-// Scene & Camera
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x071424);
-
-const camera = new THREE.PerspectiveCamera(40, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-camera.position.set(0, 1.2, 6);
+// Geometry (3D Cube)
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshStandardMaterial({ color: 0x00ffcc });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
 // Light
-const hemi = new THREE.HemisphereLight(0xbfefff, 0x080820, 0.7);
-scene.add(hemi);
-const dir = new THREE.DirectionalLight(0xffffff, 1.0);
-dir.position.set(5, 10, 7);
-scene.add(dir);
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(5, 5, 5);
 
-// Controls
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.enablePan = false;
-controls.maxPolarAngle = Math.PI / 2.1;
-controls.target.set(0, 0.5, 0);
-controls.update();
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(pointLight, ambientLight);
 
-// Objects
-const group = new THREE.Group();
-scene.add(group);
+// Stars Background
+function addStar() {
+  const starGeometry = new THREE.SphereGeometry(0.1, 24, 24);
+  const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  const star = new THREE.Mesh(starGeometry, starMaterial);
 
-const torus = new THREE.Mesh(
-  new THREE.TorusGeometry(1.2, 0.22, 64, 160),
-  new THREE.MeshStandardMaterial({ color: 0x7ce7ff, metalness: 0.3, roughness: 0.2 })
-);
-torus.position.y = 0.6;
-group.add(torus);
+  const [x, y, z] = Array(3)
+    .fill()
+    .map(() => THREE.MathUtils.randFloatSpread(100));
 
-const knot = new THREE.Mesh(
-  new THREE.TorusKnotGeometry(0.6, 0.18, 160, 32),
-  new THREE.MeshStandardMaterial({ color: 0x8a7cff, metalness: 0.3, roughness: 0.2 })
-);
-knot.position.y = 0.6;
-group.add(knot);
+  star.position.set(x, y, z);
+  scene.add(star);
+}
+Array(200).fill().forEach(addStar);
 
-// Animation
+// Animation Loop
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.005;
-  torus.rotation.y += 0.01;
-  knot.rotation.y += 0.01;
+  // Cube animation
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
 
-  controls.update();
   renderer.render(scene, camera);
 }
+
 animate();
 
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
+// Resize
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});

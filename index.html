@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aziz Jalilov | Creative Architectural Portfolio</title>
+    <title>Aziz Jalilov | Architectural Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="dark-mode"> <div class="loader">
+        <div class="spinner"></div>
+    </div>
 
     <header class="main-header">
         <div class="logo">AJ.</div>
         <div class="theme-switcher">
-            <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+            <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" checked>
             <label for="theme-toggle" class="theme-toggle-label">
                 <span class="toggle-icon sun"><i class="fas fa-sun"></i></span>
                 <span class="toggle-icon moon"><i class="fas fa-moon"></i></span>
@@ -23,8 +25,7 @@
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="section">
+    <main id="main-content" style="opacity: 0;"> <section id="hero" class="section">
             <div class="hero-container">
                 <div class="profile-picture-wrapper">
                     <img src="rasm.jpg" alt="Aziz Jalilov" class="profile-picture">
@@ -35,7 +36,7 @@
         </section>
 
         <section id="cv" class="section content-section">
-            <div class="cv-grid">
+             <div class="cv-grid">
                 <div class="cv-column">
                     <h3 class="column-title">Experience</h3>
                     <div class="cv-item">
@@ -58,11 +59,7 @@
         <section id="skills" class="section content-section">
             <h2 class="section-title">Technical Expertise</h2>
             <div class="skills-list">
-                <div class="skill-item">AutoCAD</div>
-                <div class="skill-item">Lumion</div>
-                <div class="skill-item">SketchUp</div>
-                <div class="skill-item">3D Modelling</div>
-                <div class="skill-item">Visualization</div>
+                <div class="skill-item">AutoCAD</div><div class="skill-item">Lumion</div><div class="skill-item">SketchUp</div><div class="skill-item">3D Modelling</div><div class="skill-item">Visualization</div>
             </div>
         </section>
 
@@ -76,22 +73,23 @@
         </section>
 
         <section id="contact" class="section content-section">
-            <h2 class="section-title">Let's Build the Future</h2>
+            <h2 class="section-title">Get In Touch</h2>
             <p class="contact-text">I'm actively seeking new opportunities. Let's connect and create something remarkable.</p>
             <div class="contact-methods">
-                <a href="https://www.linkedin.com/in/archsirius" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="tel:+998770121640" class="contact-link"><i class="fas fa-phone"></i> Phone</a>
-                <a href="mailto:your.email@example.com" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
+                 <a href="https://www.linkedin.com/in/archsirius" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn Profile</span>
+                </a>
+                <a href="mailto:your.email@example.com" class="cta-button">
+                    <i class="fas fa-envelope"></i>
+                    <span>Send an Email</span>
+                </a>
             </div>
         </section>
     </main>
 
     <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <h3 id="modal-title"></h3>
-            <div class="modal-gallery-wrapper"><div id="modal-gallery" class="modal-gallery"></div></div>
-        </div>
+        <div class="modal-content"><button class="modal-close">&times;</button><h3 id="modal-title"></h3><div class="modal-gallery-wrapper"><div id="modal-gallery" class="modal-gallery"></div></div></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

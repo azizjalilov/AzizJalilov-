@@ -16,13 +16,7 @@ body { --bg: var(--lm-bg); --bg-accent: var(--lm-bg-accent); --text: var(--lm-te
 body.dark-mode { --bg: var(--dm-bg); --bg-accent: var(--dm-bg-accent); --text: var(--dm-text); --heading: var(--dm-heading); --accent: var(--dm-accent); --border: var(--dm-border); --shadow: var(--dm-shadow); --glass-bg: var(--dm-glass-bg); }
 body { background-color: var(--bg); color: var(--text); }
 
-/* 2. MAXSUS YUKLANISH SPINNERI */
-.loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
-.spinner { width: 50px; height: 50px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.content-loaded .loader { opacity: 0; pointer-events: none; }
-
-/* 3. HEADER VA THEME SWITCHER */
+/* 2. HEADER VA THEME SWITCHER */
 .main-header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; z-index: 100; }
 .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading); }
 .theme-toggle-checkbox { display: none; }
@@ -33,19 +27,25 @@ body { background-color: var(--bg); color: var(--text); }
 .toggle-icon.sun { opacity: 0; } .toggle-icon.moon { opacity: 1; }
 body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon { opacity: 0; }
 
-/* 4. UMUMIY STILLAR */
+/* 3. UMUMIY STILLAR */
 .section { padding: 120px 50px; }
 #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
 .content-section { max-width: 1200px; margin: 0 auto; }
 .section-title { font-size: 3rem; color: var(--heading); margin-bottom: 60px; font-weight: 700; text-align: center; }
 
-/* 5. HERO & NEON PROFILE PICTURE */
-.profile-picture { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); box-shadow: 0 0 20px var(--accent), inset 0 0 20px var(--accent), 0 0 50px var(--accent); margin-bottom: 30px; animation: gentle-glow 4s infinite alternate; }
+/* 4. HERO & NEON PROFILE PICTURE */
+.profile-picture {
+    width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 20px var(--accent), inset 0 0 20px var(--accent), 0 0 50px var(--accent);
+    margin-bottom: 30px;
+    animation: gentle-glow 4s infinite alternate;
+}
 @keyframes gentle-glow { from { box-shadow: 0 0 15px var(--accent), inset 0 0 15px var(--accent), 0 0 30px var(--accent); } to { box-shadow: 0 0 30px var(--accent), inset 0 0 30px var(--accent), 0 0 60px var(--accent); } }
 .hero-name { font-size: 4.5rem; color: var(--heading); line-height: 1.1; font-weight: 700; }
 .hero-subtitle { font-size: 1.5rem; color: var(--text); margin-top: 15px; font-weight: 400; max-width: 600px; }
 
-/* 6. CV & GLASSMORPHISM */
+/* 5. CV & GLASSMORPHISM */
 .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .column-title { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
 .cv-item { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); padding: 30px; border-radius: 15px; transition: transform var(--transition-speed) ease; }
@@ -53,6 +53,25 @@ body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon
 .cv-item h4 { font-size: 1.5rem; color: var(--heading); font-weight: 500; }
 .cv-item p { font-size: 1.1rem; }
 .cv-date { color: var(--text); opacity: 0.7; margin-top: 5px; font-size: 1rem; }
+
+/* 6. SKILLS (YANGILANGAN DIZAYN) */
+.skills-list { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.skill-item {
+    background: var(--bg-accent);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.skill-item:hover {
+    transform: translateY(-5px);
+    color: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px var(--shadow);
+}
 
 /* 7. PROJECTS */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
@@ -63,12 +82,24 @@ body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon
 .project-card:hover .project-overlay { transform: translateY(0); }
 .project-overlay h3 { font-size: 1.5rem; }
 
-/* 8. GET IN TOUCH */
+/* 8. GET IN TOUCH (YANGILANGAN DIZAYN) */
 .contact-text { text-align: center; font-size: 1.5rem; max-width: 600px; margin: -20px auto 40px; }
 .contact-methods { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; }
-.contact-link, .cta-button { background: transparent; border: 2px solid var(--border); color: var(--text); text-decoration: none; font-size: 1.1rem; padding: 15px 25px; border-radius: 10px; display: flex; align-items: center; gap: 15px; transition: all var(--transition-speed) ease; }
-.contact-link:hover, .cta-button:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px var(--shadow); }
-.cta-button { border-color: var(--accent); color: var(--accent); animation: cta-pulse 3s infinite alternate; }
+.contact-link, .cta-button {
+    background: transparent; border: 2px solid var(--border);
+    color: var(--text); text-decoration: none; font-size: 1.1rem;
+    padding: 15px 25px; border-radius: 10px;
+    display: flex; align-items: center; gap: 15px;
+    transition: all var(--transition-speed) ease;
+}
+.contact-link:hover, .cta-button:hover {
+    border-color: var(--accent); color: var(--accent);
+    transform: translateY(-5px); box-shadow: 0 10px 20px var(--shadow);
+}
+.cta-button {
+    border-color: var(--accent); color: var(--accent);
+    animation: cta-pulse 3s infinite alternate;
+}
 .cta-button:hover { animation-play-state: paused; }
 @keyframes cta-pulse { from { box-shadow: 0 0 5px var(--accent); } to { box-shadow: 0 0 25px var(--accent); } }
 .contact-link i, .cta-button i { font-size: 1.5rem; }
@@ -84,7 +115,7 @@ body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon
 .modal-gallery-item img { height: 85%; width: auto; object-fit: contain; }
 .modal-gallery-item p { margin-top: 10px; color: #aaa; }
 
-/* 10. ADAPTIVE DESIGN (MUHIM QISM) */
+/* 10. ADAPTIVE DESIGN (XATOLIK TUZATILGAN) */
 @media (max-width: 768px) {
     .main-header { padding: 15px 20px; }
     .section { padding: 80px 20px; }
@@ -92,9 +123,8 @@ body.dark-mode .toggle-icon.sun { opacity: 1; } body.dark-mode .toggle-icon.moon
     .profile-picture { width: 180px; height: 180px; }
     .section-title { font-size: 2.2rem; }
     
-    /* XATOLIKNI TO'G'RILAYDIGAN KOD */
     .cv-grid {
-        grid-template-columns: 1fr; /* Ikkita ustunni bitta ustunga aylantiradi */
+        grid-template-columns: 1fr; /* Eng muhim xatolik tuzatildi */
     }
     
     .projects-grid { grid-template-columns: 1fr; }

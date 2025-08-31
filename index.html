@@ -1,71 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aziz Jalilov | 3D Portfolio</title>
+    <title>Sizning Ismingiz | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div id="canvas-container"></div>
 
-    <div class="container">
-        <header>
-            <nav>
-                <a href="#hero" class="nav-link">Bosh Sahifa</a>
-                <a href="#about" class="nav-link">Men Haqimda</a>
-                <a href="#projects" class="nav-link">Loyihalarim</a>
-                <a href="#contact" class="nav-link">Bog'lanish</a>
-            </nav>
-        </header>
+    <canvas id="bg"></canvas>
 
-        <main>
-            <section id="hero">
-                <div class="hero-content">
-                    <h1>Aziz Jalilov</h1>
-                    <p>Frontend Dasturchi | Kreativ Kod Ustasi</p>
+    <header>
+        <a href="#" class="logo">Portfolio</a>
+        <nav>
+            <ul>
+                <li><a href="#about">Men Haqimda</a></li>
+                <li><a href="#projects">Loyihalarim</a></li>
+                <li><a href="#skills">Ko'nikmalarim</a></li>
+                <li><a href="#contact">Bog'lanish</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Ismingiz Familiyangiz</h1>
+                <p>Veb-dasturchi | 3D Dizayn Ishqibozi</p>
+                <a href="#projects" class="cta-button">Loyihalarimni Ko'rish</a>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2>Men Haqimda</h2>
+            <p>Bu yerga o'zingiz haqingizda qisqacha, lekin qiziqarli ma'lumot yozing. Masalan, nimalarga qiziqishingiz, qanday texnologiyalar bilan ishlashingiz va kelajakdagi maqsadlaringiz haqida yozishingiz mumkin. Bu bo'lim sizning shaxsiyatingizni ochib berishi kerak.</p>
+        </section>
+
+        <section id="projects" class="content-section">
+            <h2>Loyihalarim</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x300.png?text=Loyiha+1" alt="Loyiha 1">
+                    <h3>Loyiha Nomi 1</h3>
+                    <p>Loyiha haqida qisqacha tavsif. Qanday texnologiyalardan foydalanilgani va uning maqsadi.</p>
+                    <a href="#" target="_blank">Ko'rish</a>
                 </div>
-            </section>
-
-            <section id="about" class="content-section">
-                <h2>Men Haqimda</h2>
-                <p>Men zamonaviy va interaktiv veb-saytlar yaratishga ixtisoslashgan dasturchiman. Har bir loyihamda foydalanuvchi tajribasini birinchi o'ringa qo'yaman va eng so'nggi texnologiyalardan unumli foydalanaman.</p>
-            </section>
-
-            <section id="projects" class="content-section">
-                <h2>Loyihalarim</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h3>Loyiha 1</h3>
-                        <p>Bu yerda birinchi loyihangiz haqida qisqacha ma'lumot bo'ladi.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>Loyiha 2</h3>
-                        <p>Bu yerda ikkinchi loyihangiz haqida qisqacha ma'lumot bo'ladi.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>Loyiha 3</h3>
-                        <p>Uchinchi loyihangiz haqida qisqacha ma'lumot yozing.</p>
-                    </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x300.png?text=Loyiha+2" alt="Loyiha 2">
+                    <h3>Loyiha Nomi 2</h3>
+                    <p>Loyiha haqida qisqacha tavsif. Qanday texnologiyalardan foydalanilgani va uning maqsadi.</p>
+                    <a href="#" target="_blank">Ko'rish</a>
                 </div>
-            </section>
-
-            <section id="contact" class="content-section">
-                <h2>Bog'lanish</h2>
-                <p>Men bilan bog'lanish uchun <a href="mailto:emailingiz@gmail.com">email</a> yozing yoki ijtimoiy tarmoqlarda kuzatib boring.</p>
-                <div class="social-links">
-                    <a href="#">Telegram</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">GitHub</a>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x300.png?text=Loyiha+3" alt="Loyiha 3">
+                    <h3>Loyiha Nomi 3</h3>
+                    <p>Loyiha haqida qisqacha tavsif. Qanday texnologiyalardan foydalanilgani va uning maqsadi.</p>
+                    <a href="#" target="_blank">Ko'rish</a>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <h2>Ko'nikmalarim</h2>
+            <div class="skills-container">
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Three.js</div>
+                <div class="skill">GSAP</div>
+                <div class="skill">React</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Figma</div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2>Bog'lanish</h2>
+            <p>Men bilan bog'lanish uchun quyidagi email manziliga yozing yoki ijtimoiy tarmoqlardagi sahifalarimga o'ting.</p>
+            <a href="mailto:emailingiz@example.com" class="contact-link">emailingiz@example.com</a>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Telegram</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ismingiz Familiyangiz. Barcha huquqlar himoyalangan.</p>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
     <script src="script.js"></script>
+
 </body>
 </html>

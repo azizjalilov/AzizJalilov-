@@ -3,86 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>| Portfolio</title>
+    <title>Aziz Jalilov | Interaktiv Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="canvas-container"></div>
 
-    <header class="hero">
-        <div class="hero-content">
-            <img src="profile.jpg" alt="Profil Rasmi" class="profile-pic">
-            
-            <h1 class="name-title">Aziz Jalilov</h1>
-            
-            <p class="subtitle"><span class="typing-effect"></span></p>
-        </div>
-        <div class="scroll-down">
-            <span></span>
-        </div>
-    </header>
-
-    <main>
-        <section id="about" class="content-section">
-            <h2 class="section-title">Men Haqimda</h2>
-            <p>Salom! Men — texnologiyalar olamiga ishtiyoqi baland bo'lgan yosh dasturchiman. Raqamli dunyoda odamlar uchun qulaylik yaratadigan, chiroyli va funksional veb-saytlar yaratishga intilaman. Har bir loyihaga ijodiy yondashib, eng zamonaviy texnologiyalardan foydalanishga harakat qilaman.</p>
+    <main class="content">
+        <section class="hero-section">
+            <h1>Aziz Jalilov</h1>
+            <p>Raqamli Dunyoni Jonlantiruvchi Dasturchi</p>
         </section>
 
-        <section id="skills" class="content-section">
-            <h2 class="section-title">Ko'nikmalarim</h2>
-            <div class="skills-grid">
-                <div class="skill-card">HTML5</div>
-                <div class="skill-card">CSS3</div>
-                <div class="skill-card">JavaScript</div>
-                <div class="skill-card">React</div>
-                <div class="skill-card">Node.js</div>
-                <div class="skill-card">Python</div>
-                <div class="skill-card">SQL</div>
-                <div class="skill-card">Figma</div>
-            </div>
+        <section class="content-section" data-title="Tajriba">
+            <h2>Mening Dunyom</h2>
+            <p>Men kod yordamida g'oyalarni hayotga tatbiq etaman. Har bir loyiha — bu shunchaki vazifa emas, balki foydalanuvchiga unutilmas tajriba taqdim etish imkoniyatidir. Mening ishim — funksionallik va san'atning uyg'unligi.</p>
         </section>
 
-        <section id="projects" class="content-section">
-            <h2 class="section-title">Mening Loyihalarim</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="project1.jpg" alt="Loyiha 1">
-                    <h3>Loyiha Nomi 1</h3>
-                    <p>Bu yerda loyihangiz haqida qisqacha ma'lumot yozishingiz mumkin.</p>
-                    <a href="#" class="btn">Ko'proq bilish</a>
-                </div>
-                <div class="project-card">
-                    <img src="project2.jpg" alt="Loyiha 2">
-                    <h3>Loyiha Nomi 2</h3>
-                    <p>Bu yerda ikkinchi loyihangiz haqida qisqacha ma'lumot.</p>
-                    <a href="#" class="btn">Ko'proq bilish</a>
-                </div>
-                <div class="project-card">
-                    <img src="project3.jpg" alt="Loyiha 3">
-                    <h3>Loyiha Nomi 3</h3>
-                    <p>Uchinchi loyihangiz haqida qisqacha ma'lumot.</p>
-                    <a href="#" class="btn">Ko'proq bilish</a>
-                </div>
-            </div>
+        <section class="content-section" data-title="Ko'nikmalar">
+            <h2>Texnologiyalar</h2>
+            <p>Men zamonaviy veb-texnologiyalarning eng so'nggi yutuqlaridan foydalanaman. JavaScript, React, Three.js va GSAP kabi vositalar mening asosiy qurollarimdir. Men doim yangi narsalarni o'rganishdan charchamayman.</p>
         </section>
-
-        <section id="contact" class="content-section">
-            <h2 class="section-title">Bog'lanish</h2>
-            <p>Men bilan hamkorlik qilish yoki biror savolingiz bo'lsa, quyidagi manzillar orqali bog'laning!</p>
+        
+        <section class="content-section" data-title="Aloqa">
+            <h2>Bog'lanish</h2>
+            <p>Keling, birgalikda ajoyib narsalar yaratamiz. Men bilan bog'laning!</p>
             <div class="social-links">
-                <a href="mailto:emailingiz@gmail.com" class="social-icon">Email</a>
-                <a href="https://t.me/telegram_username" target="_blank" class="social-icon">Telegram</a>
-                <a href="https://github.com/github_username" target="_blank" class="social-icon">GitHub</a>
+                <a href="https://github.com/azizjalilov" target="_blank">GitHub</a>
+                <a href="https://t.me/your_telegram" target="_blank">Telegram</a>
+                <a href="mailto:your_email@gmail.com">Email</a>
             </div>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 | <a href="https://github.com/github_username" target="_blank">Aziz Jalilov</a></p>
-    </footer>
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
